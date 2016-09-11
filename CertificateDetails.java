@@ -29,7 +29,7 @@ public class CertificateDetails {
          System.out.println(x509Certificate.getIssuerDN());
          System.out.println(x509Certificate.getNotBefore());
          System.out.println(x509Certificate.getNotAfter());
-         System.out.println(x509Certificate.getSerialNumber());
+         System.out.println(x509Certificate.getSerialNumber().toString());
          System.out.println(x509Certificate.getSigAlgName());
          // Subjective Alternative Names.
          for (List<?> SAN: x509Certificate.getSubjectAlternativeNames()) {
