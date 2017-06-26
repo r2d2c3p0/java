@@ -24,7 +24,7 @@ public class CertificateDetails {
         BigInteger sNumber = x509Certificate.getSerialNumber();
         String Sig = x509Certificate.getSigAlgName();
         String SANEntries = "";
-        if (verboseflag == "--verbose") {
+        if (verboseflag.equals("--verbose")) {
 			System.out.println("  "+x509Certificate.getSubjectDN());
 	        System.out.println("  "+x509Certificate.getIssuerDN());
 	        System.out.println("  "+x509Certificate.getNotBefore());
@@ -34,7 +34,7 @@ public class CertificateDetails {
 	    }
         // Subjective Alternative Names.
         for (List<?> SAN: x509Certificate.getSubjectAlternativeNames()) {
-        	if (verboseflag == "--verbose") {
+        	if (verboseflag.equals("--verbose")) {
         		System.out.println("\t"+SAN.get(1));
         	}
         	SANEntries = SANEntries+"<li>"+SAN.get(1)+"</li>";
