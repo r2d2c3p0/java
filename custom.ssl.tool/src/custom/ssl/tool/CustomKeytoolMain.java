@@ -15,11 +15,12 @@ package custom.ssl.tool;
                  	2. Add Certificates
                  	3. Delete Certificates
                  	4. Download Certificates
-                 	5. Add Personal/Private Key
+                 	5. Import PKCS12
+                 	6. Download Private Key
                 =======================================================
 
 
-        Make your selection [1/2/3/4/5]:
+        Make your selection [1/2/3/4/5/6]:
 *
 *
 */
@@ -67,10 +68,12 @@ public class CustomKeytoolMain {
 		System.out.println("\t\t Keystore ["+Keystore+"], Select operation below:");
 		System.out.println("\t\t=======================================================");
 		System.out.println("\t\t\t 1. List Certificates\n\t\t\t 2. Add Certificates\n\t\t\t "
-				+ "3. Delete Certificates\n\t\t\t 4. Download Certificates\n\t\t\t "+ "5. Add Personal/Private Key");
+				+ "3. Delete Certificates\n\t\t\t 4. Download Certificates\n\t\t\t "+ 
+				"5. Import PKCS12\n\t\t\t "+ 
+				"6. Extract Private Key");
 		System.out.println("\t\t=======================================================\n\n");
 		
-		String Selection;System.out.print("\tMake your selection [1/2/3/4/5]: ");
+		String Selection;System.out.print("\tMake your selection [1/2/3/4/5/6]: ");
 		Selection = Operation.next();
 
 		if (Selection.equals("1")) {
@@ -143,18 +146,24 @@ public class CustomKeytoolMain {
 			}
 		} else if (Selection.equals("5")) {
 			System.out.println();
-			/*String Keyfile;
-			System.out.print("\tEnter Keyfile location: ");
-			Keyfile = Operation.next();
-			String KeyPassword=PasswordField.readPassword("\n\tEnter keyfile '"+Keyfile+"' password: ");
+			System.out.print("\tEnter input keystore location: ");
+			String Keyfile = Operation.next();
+			String KeyPassword=PasswordField.readPassword("\n\tEnter '"+Keyfile+"' password: ");
 			try {
-				ImportPrivateKey.ImportPrivateKeyMethod(Keystore, Password, Keyfile, KeyPassword);
+				PKCS12Import.PKCS12ImportMain(Keyfile, Keystore, KeyPassword, Password);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+				System.out.println("\tERROR| PKCS12Import (main) occured.\n");
+			}			
+		} else if (Selection.equals("6")) {
+			System.out.println();
+			try {
+				ExtractPrivateKey.ExtractPrivateKeyMain(Keystore, Password);
 			} catch (CertificateException e) {
 				//e.printStackTrace();
-				System.out.println("\tERROR| CertificateException occured.");
+				System.out.println("\tERROR| CertificateException (pKey.main) occured.\n");
 			}
-			*/
-			System.out.println("\tCode under construction.\n");
 		} else {			
 			System.out.println("\t\tTry again.\n");
 		}
