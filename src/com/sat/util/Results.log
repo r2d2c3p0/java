@@ -1,0 +1,68 @@
+
+		===========================================================
+		 Generate Lottery Ticket Numbers, Select game below:
+		===========================================================
+			 1. Mega Millions.
+			 2. Lotto.
+			 3. Powerball.
+			 4. All or Nothing.
+		===========================================================
+
+
+	Make your selection [1/2/3/4]: 1
+
+	[07:20:06 AM CST Tuesday, November 14, 2017] MegaMillions [Every Tuesday and Friday at 10:12 PM CST]
+	[07:20:06 AM CST Tuesday, November 14, 2017] MegaMillions [MM_NUMBER_LIMIT=70 & MEGABALL_LIMIT=25]
+	[07:20:06 AM CST Tuesday, November 14, 2017] MegaMillions [24 - 63 - 60 - 17 - 43 - 5(m)]
+
+
+	===========================================================
+		 Generate Lottery Ticket Numbers, Select game below:
+		===========================================================
+			 1. Mega Millions.
+			 2. Lotto.
+			 3. Powerball.
+			 4. All or Nothing.
+		===========================================================
+
+
+	Make your selection [1/2/3/4]: 2
+
+	[07:20:59 AM CST Tuesday, November 14, 2017] Lotto [Every Wednesday and Saturday at 10:12 PM CST]
+	[07:20:59 AM CST Tuesday, November 14, 2017] Lotto [LT_NUMBER_LIMIT=54]
+	[07:20:59 AM CST Tuesday, November 14, 2017] Lotto [3 - 27 - 28 - 25 - 47 - 46]
+
+
+
+		===========================================================
+		 Generate Lottery Ticket Numbers, Select game below:
+		===========================================================
+			 1. Mega Millions.
+			 2. Lotto.
+			 3. Powerball.
+			 4. All or Nothing.
+		===========================================================
+
+
+	Make your selection [1/2/3/4]: 3
+
+	[07:21:24 AM CST Tuesday, November 14, 2017] Powerball [Every Wednesday and Saturday at 10:12 PM CST]
+	[07:21:24 AM CST Tuesday, November 14, 2017] Powerball [PB_NUMBER_LIMIT=69 & POWERBALL_LIMIT=26]
+	[07:21:24 AM CST Tuesday, November 14, 2017] Powerball [61 - 54 - 69 - 66 - 30 - 13(p)]
+
+
+		===========================================================
+		 Generate Lottery Ticket Numbers, Select game below:
+		===========================================================
+			 1. Mega Millions.
+			 2. Lotto.
+			 3. Powerball.
+			 4. All or Nothing.
+		===========================================================
+
+
+	Make your selection [1/2/3/4]: 4
+
+	[07:21:38 AM CST Tuesday, November 14, 2017] All or Nothing [Every weekday and Saturday at 10:00 AM, 12:27 PM, 6:00 PM, and 10:12 PM CST]
+	[07:21:38 AM CST Tuesday, November 14, 2017] All or Nothing [AON_NUMBER_LIMIT=24]
+	[07:21:38 AM CST Tuesday, November 14, 2017] All or Nothing [13 - 9 - 24 - 2 - 3 - 21 - 20 - 6 - 22 - 14 - 10 - 12]
