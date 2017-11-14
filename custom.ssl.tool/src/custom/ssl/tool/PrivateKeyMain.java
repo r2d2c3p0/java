@@ -41,6 +41,7 @@ public class PrivateKeyMain {
 		} catch (UnrecoverableKeyException e) {
 		} catch (NoSuchAlgorithmException e) {
 		} catch (KeyStoreException e) {
+			//catch the exception here
 		}
 		return null;
 	}
