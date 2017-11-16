@@ -17,10 +17,11 @@ package custom.ssl.tool;
                  	4. Download Certificates
                  	5. Import PKCS12
                  	6. Download Private Key
+                 	7. Create PKCS12
                 =======================================================
 
 
-        Make your selection [1/2/3/4/5/6]:
+        Make your selection [1/2/3/4/5/6/7]:
 *
 *
 */
@@ -40,6 +41,7 @@ public class CustomKeytoolMain {
 
 		String CACertificatesPath = null;
 		String Keystore = null;
+		String Password = null;
 		
         try {
         	Keystore = args[0];
@@ -62,18 +64,27 @@ public class CustomKeytoolMain {
 		
 		KeyStore ks = ChecksAndValidations.PreChecksAndValidations(Keystore);
 		Scanner Operation = new Scanner(System.in);
-		String Password = PasswordField.readPassword("\n\tEnter keystore '"+Keystore+"' password: ");
+		if (Keystore.endsWith(".key")) {
+			// do nothing
+		} else {
+			Password = PasswordField.readPassword("\n\tEnter keystore '"+Keystore+"' password: ");
+		}
 
 		System.out.println("\n\t\t=======================================================");
 		System.out.println("\t\t Keystore ["+Keystore+"], Select operation below:");
 		System.out.println("\t\t=======================================================");
-		System.out.println("\t\t\t 1. List Certificates\n\t\t\t 2. Add Certificates\n\t\t\t "
-				+ "3. Delete Certificates\n\t\t\t 4. Download Certificates\n\t\t\t "+ 
-				"5. Import PKCS12\n\t\t\t "+ 
-				"6. Extract Private Key");
+		System.out.println("\t\t\t "
+				+ "1. List Certificates\n\t\t\t "
+				+ "2. Add Certificates\n\t\t\t "
+				+ "3. Delete Certificates\n\t\t\t "
+				+ "4. Download Certificates\n\t\t\t " 
+				+ "5. Import Another Keystore\n\t\t\t " 
+				+ "6. Extract Private Key\n\t\t\t "
+				+ "7. Create PKCS12"
+				+ "");
 		System.out.println("\t\t=======================================================\n\n");
 		
-		String Selection;System.out.print("\tMake your selection [1/2/3/4/5/6]: ");
+		String Selection;System.out.print("\tMake your selection [1/2/3/4/5/6/7]: ");
 		Selection = Operation.next();
 
 		if (Selection.equals("1")) {
@@ -150,7 +161,7 @@ public class CustomKeytoolMain {
 			String Keyfile = Operation.next();
 			String KeyPassword=PasswordField.readPassword("\n\tEnter '"+Keyfile+"' password: ");
 			try {
-				PKCS12Import.PKCS12ImportMain(Keyfile, Keystore, KeyPassword, Password);
+				KeystoreImport.KeystoreImportMain(Keyfile, Keystore, KeyPassword, Password);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				//e.printStackTrace();
@@ -164,8 +175,12 @@ public class CustomKeytoolMain {
 				//e.printStackTrace();
 				System.out.println("\tERROR| CertificateException (pKey.main) occured.\n");
 			}
+		} else if (Selection.equals("7")) {
+			System.out.println();
+			System.exit(7);
 		} else {			
-			System.out.println("\t\tTry again.\n");
+			System.out.println("\t\tSelection not found.\n");
+			System.exit(1);
 		}
 	}
 

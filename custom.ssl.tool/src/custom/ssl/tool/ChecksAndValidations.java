@@ -28,8 +28,10 @@ public class ChecksAndValidations {
 				System.exit(10);
 			} else if (kFilename.endsWith(".jks") || kFilename.endsWith(".JKS")) {
 				ks = KeyStore.getInstance("JKS");
+			} else if (kFilename.endsWith(".key")) {
+				ks = KeyStore.getInstance("PKCS12");
 			} else {
-				System.out.println("\n\tERROR| Keystore type is not supported by this program.\n");
+				System.out.println("\n\tERROR| Keystore ("+kFilename+") type is not supported by this program.\n");
 				System.exit(2);
 			}
 		} else {

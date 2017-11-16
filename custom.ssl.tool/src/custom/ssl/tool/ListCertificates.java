@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
+import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Enumeration;
@@ -20,13 +21,16 @@ public class ListCertificates {
 		ks.load(in1, Password.toCharArray());
 		@SuppressWarnings("rawtypes")
 		Enumeration aliasEnumumeration;
+		Certificate[] chainCertificates;
 
 		try {
-			aliasEnumumeration = ks.aliases();int aNumber =0;			
-			while (aliasEnumumeration.hasMoreElements()) {				
+			aliasEnumumeration = ks.aliases();int aNumber =0;int ccNumber =1;
+			while (aliasEnumumeration.hasMoreElements()) {
+				boolean isAlias = false;
 				String cAlias = (String) aliasEnumumeration.nextElement();
 				if (ks.isKeyEntry(cAlias)) {
-					System.out.println("\t\t|*|Alias (PrivateKey): "+cAlias);					
+					System.out.println("\t\t|*|Alias (PrivateKey): "+cAlias);
+					isAlias = true;
 				} else {
 					aNumber++;
 					System.out.println("\t\t|"+aNumber+"|Alias: "+cAlias);
@@ -43,7 +47,19 @@ public class ListCertificates {
 					}
 				} catch (Exception e1) {
 					System.out.println("\t\t\t\t\t\t\tSAN entries: none");
-				}				
+				}
+				if (isAlias) {
+					chainCertificates = ks.getCertificateChain(cAlias);
+					for (int ce=1;ce<chainCertificates.length;ce++) {
+						X509Certificate certchain = (X509Certificate) chainCertificates[ce];
+						System.out.println("\t\t\t[Chain "+ccNumber+"] Subject name: "+certchain.getSubjectDN());
+						System.out.println("\t\t\t[Chain "+ccNumber+"] Issued by: "+certchain.getIssuerDN());
+						System.out.println("\t\t\t[Chain "+ccNumber+"] Serial number: "+certchain.getSerialNumber().toString());
+						System.out.println("\t\t\t[Chain "+ccNumber+"] Serial number(HEX):  "+certchain.getSerialNumber().toString(16));
+						System.out.println("\t\t\t[Chain "+ccNumber+"] Expires on: "+certchain.getNotAfter());
+						ccNumber++;
+					}					
+				}
 				System.out.println();
 			}
 		} catch (KeyStoreException e1) {
