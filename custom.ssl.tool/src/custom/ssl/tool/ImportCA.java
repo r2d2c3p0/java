@@ -1,5 +1,9 @@
 package custom.ssl.tool;
 
+/**
+ * Not in use
+ */
+
 import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;

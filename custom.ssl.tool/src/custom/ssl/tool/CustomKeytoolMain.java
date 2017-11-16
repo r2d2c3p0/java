@@ -1,6 +1,6 @@
 package custom.ssl.tool;
 
-/*
+/**
 * 
 * Custom Keytool Main Program.
 * 
@@ -8,7 +8,7 @@ package custom.ssl.tool;
 * JAVA keytool command is not very user friendly, had to come up with this program.
 * Dependencies, JAVA 5 or more and Bouncy Castle 1.47 jar.
 * 
-* 		=======================================================
+* 				=======================================================
                  Keystore [<keystore name>], Select operation below:
                 =======================================================
                  	1. List Certificates
@@ -17,11 +17,12 @@ package custom.ssl.tool;
                  	4. Download Certificates
                  	5. Import Another Keystore
                  	6. Download Private Key
-                 	7. Create PKCS12
+                 	7. Show Signers Information
+                 	8. Create PKCS12 Keystore
                 =======================================================
 
 
-        Make your selection [1/2/3/4/5/6/7]:
+        Make your selection [1/..../8]:
 *
 *
 */
@@ -80,11 +81,12 @@ public class CustomKeytoolMain {
 				+ "4. Download Certificates\n\t\t\t " 
 				+ "5. Import Another Keystore\n\t\t\t " 
 				+ "6. Extract Private Key\n\t\t\t "
-				+ "7. Create PKCS12"
+				+ "7. Show Signers Information\n\t\t\t "
+				+ "8. Create PKCS12 Keystore"
 				+ "");
 		System.out.println("\t\t=======================================================\n\n");
 		
-		String Selection;System.out.print("\tMake your selection [1/2/3/4/5/6/7]: ");
+		String Selection;System.out.print("\tMake your selection [1/..../8]: ");
 		Selection = Operation.next();
 
 		if (Selection.equals("1")) {
@@ -165,7 +167,7 @@ public class CustomKeytoolMain {
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				//e.printStackTrace();
-				System.out.println("\tERROR| PKCS12Import (main) occured.\n");
+				System.out.println("\tERROR| KeystoreImport (main) occured.\n");
 			}			
 		} else if (Selection.equals("6")) {
 			System.out.println();
@@ -177,7 +179,16 @@ public class CustomKeytoolMain {
 			}
 		} else if (Selection.equals("7")) {
 			System.out.println();
-			System.exit(7);
+			try {
+				GetCASigners.GetCASignersMain(Keystore, Password);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+				System.out.println("\tERROR| Exception (GetCASigners.main) occured.\n");
+			}
+		} else if (Selection.equals("8")) {
+			System.out.println();
+			System.exit(8);
 		} else {			
 			System.out.println("\t\tSelection not found.\n");
 			System.exit(1);

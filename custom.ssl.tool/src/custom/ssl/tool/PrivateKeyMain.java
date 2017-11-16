@@ -1,5 +1,8 @@
 package custom.ssl.tool;
 
+/**
+ * Not in use
+ */
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.security.Key;
@@ -12,24 +15,32 @@ import java.security.PublicKey;
 import java.security.Security;
 import java.security.UnrecoverableKeyException;
 
-import org.bouncycastle.openssl.PEMWriter;
+//import org.bouncycastle.openssl.PEMWriter;
 
 public class PrivateKeyMain {
 	
+	@SuppressWarnings("unused")
 	public static void exportPrivateKey(String Keystore, String Alias, String Password) throws Exception {
+		
+		System.out.println();
 		
 		Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 		KeyStore keystore = KeyStore.getInstance("PKCS12", "BC");
 		keystore.load(new FileInputStream(Keystore), Password.toCharArray());
 		KeyPair keyPair = getPrivateKey(keystore, Alias, Password.toCharArray());
 		PrivateKey privateKey = keyPair.getPrivate();
+		@SuppressWarnings("resource")
 		FileWriter fw = new FileWriter("private.pem");
-		PEMWriter writer = new PEMWriter(fw);
-		writer.writeObject(privateKey);
-		writer.close();
+		//PEMWriter writer = new PEMWriter(fw);
+		//writer.writeObject(privateKey);
+		//writer.close();
+
 	}
 
 	private static KeyPair getPrivateKey(KeyStore keystore, String alias, char[] password) {
+	 
+		System.out.println();
+
 		try {
 			Key key = keystore.getKey(alias, password);
 			if (key instanceof PrivateKey) {
@@ -43,6 +54,6 @@ public class PrivateKeyMain {
 		} catch (KeyStoreException e) {
 		}
 		return null;
-	}
 
+	}
 }
