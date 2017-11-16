@@ -8,7 +8,7 @@ package custom.ssl.tool;
 * JAVA keytool command is not very user friendly, had to come up with this program.
 * Dependencies, JAVA 5 or more and Bouncy Castle 1.47 jar.
 * 
-* 				=======================================================
+* 		=======================================================
                  Keystore [<keystore name>], Select operation below:
                 =======================================================
                  	1. List Certificates
