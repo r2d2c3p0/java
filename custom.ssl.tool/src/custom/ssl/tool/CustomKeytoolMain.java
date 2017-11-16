@@ -15,7 +15,7 @@ package custom.ssl.tool;
                  	2. Add Certificates
                  	3. Delete Certificates
                  	4. Download Certificates
-                 	5. Import PKCS12
+                 	5. Import Another Keystore
                  	6. Download Private Key
                  	7. Create PKCS12
                 =======================================================
