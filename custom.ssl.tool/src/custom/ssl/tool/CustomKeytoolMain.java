@@ -38,7 +38,10 @@ import java.security.KeyStore;
 public class CustomKeytoolMain {
 
 	@SuppressWarnings({ "unused", "resource" })
-	public static void main(String[] args) throws KeyStoreException, NoSuchAlgorithmException, IOException {
+	public static void main(String[] args) throws 
+		KeyStoreException, 
+		NoSuchAlgorithmException, 
+		IOException {
 
 		String CACertificatesPath = null;
 		String Keystore = null;

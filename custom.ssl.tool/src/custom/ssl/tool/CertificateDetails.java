@@ -10,7 +10,9 @@ import java.util.List;
 
 public class CertificateDetails {
 
-	public static BigInteger CertificateSerialNumber(String CertificateFileName) throws FileNotFoundException, CertificateException {
+	public static BigInteger CertificateSerialNumber(String CertificateFileName) throws 
+		FileNotFoundException, 
+		CertificateException {
 
 		FileInputStream fileInputStream = new FileInputStream(CertificateFileName);
         CertificateFactory certificateFactory = CertificateFactory.getInstance("X509");
@@ -19,7 +21,9 @@ public class CertificateDetails {
 
 	}
 	
-	public static void CertificateAllDetails(String CertificateFileName) throws FileNotFoundException, CertificateException {
+	public static void CertificateAllDetails(String CertificateFileName) throws 
+		FileNotFoundException, 
+		CertificateException {
 		
 		FileInputStream fileInputStream = new FileInputStream(CertificateFileName);
         CertificateFactory certificateFactory = CertificateFactory.getInstance("X509");

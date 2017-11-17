@@ -24,8 +24,11 @@ public class ExtractPrivateKey {
 	private static File exportedFile=new File("private.key");;
 	
 	@SuppressWarnings("resource")
-	public static void ExtractPrivateKeyMain(String Keystore, String Password) 
-			throws KeyStoreException, NoSuchAlgorithmException,	CertificateException, IOException {
+	public static void ExtractPrivateKeyMain(String Keystore, String Password) throws
+			KeyStoreException, 
+			NoSuchAlgorithmException,
+			CertificateException, 
+			IOException {
 		
 		KeyStore ks = ChecksAndValidations.PreChecksAndValidations(Keystore);
 		FileInputStream in1 = new FileInputStream(Keystore);

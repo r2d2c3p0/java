@@ -20,7 +20,8 @@ import java.security.UnrecoverableKeyException;
 public class PrivateKeyMain {
 	
 	@SuppressWarnings("unused")
-	public static void exportPrivateKey(String Keystore, String Alias, String Password) throws Exception {
+	public static void exportPrivateKey(String Keystore, String Alias, String Password) throws 
+		Exception {
 		
 		System.out.println();
 		

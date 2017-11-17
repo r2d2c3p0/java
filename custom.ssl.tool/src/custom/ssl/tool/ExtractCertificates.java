@@ -19,8 +19,10 @@ import java.util.Scanner;
 public class ExtractCertificates {
 	
 	@SuppressWarnings("resource")
-	public static void ExtractCertificatesMain(String Keystore, String Password) 
-			throws KeyStoreException, NoSuchAlgorithmException,	CertificateException {
+	public static void ExtractCertificatesMain(String Keystore, String Password) throws
+		KeyStoreException, 
+		NoSuchAlgorithmException, 
+		CertificateException {
 		
 		KeyStore ks = ChecksAndValidations.PreChecksAndValidations(Keystore);
 		FileInputStream in1;

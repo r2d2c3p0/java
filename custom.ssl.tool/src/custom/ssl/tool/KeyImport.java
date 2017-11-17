@@ -100,9 +100,9 @@ public class KeyImport  {
    * @param byteStrings an output array of all 0x04 tags
    */
   private static void ASN1Parse(byte[] b, 
-                                List<BigInteger> integers,
-                                List<byte[]> oids,
-                                List<byte[]> byteStrings) throws KeyImportException  {
+		  List<BigInteger> integers,
+		  List<byte[]> oids,
+		  List<byte[]> byteStrings) throws KeyImportException  {
     int pos = 0;
     while (pos < b.length)  {
       byte tag = b[pos++];

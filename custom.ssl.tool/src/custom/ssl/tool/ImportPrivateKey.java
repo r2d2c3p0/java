@@ -16,7 +16,11 @@ public class ImportPrivateKey {
 	
 	@SuppressWarnings({ "rawtypes", "unused", "resource" })
 	public static void ImportPrivateKeyMethod(String Keystore, String Password, String KeyFileName, String KeyPassword) 
-			throws CertificateException, KeyStoreException,	NoSuchAlgorithmException, IOException {
+			throws 
+			CertificateException, 
+			KeyStoreException, 
+			NoSuchAlgorithmException, 
+			IOException {
 		
 		boolean foundCertificate = false;
 		Enumeration aliasEnumumeration;

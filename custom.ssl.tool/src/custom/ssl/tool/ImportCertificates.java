@@ -19,8 +19,11 @@ import java.math.BigInteger;
 public class ImportCertificates {
 	
 	@SuppressWarnings({ "rawtypes", "unused", "resource" })
-	public static void ImportCertificatesMethod(String Keystore, String Password, String CertificateFileName) 
-			throws CertificateException, KeyStoreException,	NoSuchAlgorithmException, IOException {
+	public static void ImportCertificatesMethod(String Keystore, String Password, String CertificateFileName) throws
+			CertificateException, 
+			KeyStoreException, 
+			NoSuchAlgorithmException, 
+			IOException {
 		
 		boolean foundCertificate = false;
 		Enumeration aliasEnumumeration;
@@ -30,7 +33,7 @@ public class ImportCertificates {
 		
 		KeyStore ks = ChecksAndValidations.PreChecksAndValidations(Keystore);
 		FileInputStream in1 = new FileInputStream(Keystore);
-		ks.load(in1, Password.toCharArray());		
+		ks.load(in1, Password.toCharArray());
 		BigInteger InputCertSN = CertificateDetails.CertificateSerialNumber(CertificateFileName);
 		
 		try {			

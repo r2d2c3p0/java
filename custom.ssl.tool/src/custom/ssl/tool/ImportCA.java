@@ -68,7 +68,11 @@ public class ImportCA {
 	
 	@SuppressWarnings({ "rawtypes", "unused" })
 	public static void ImportCertificateMethod(String Keystore, String Password, String CertificateFileName) 
-			throws CertificateException, KeyStoreException,	NoSuchAlgorithmException, IOException {
+			throws 
+			CertificateException, 
+			KeyStoreException, 
+			NoSuchAlgorithmException, 
+			IOException {
 		
 		Scanner sc=new Scanner(System.in);
 		KeyStore ks = ChecksAndValidations.PreChecksAndValidations(Keystore);

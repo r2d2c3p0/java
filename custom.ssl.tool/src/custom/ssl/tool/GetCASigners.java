@@ -9,10 +9,11 @@ import java.util.Iterator;
 
 public class GetCASigners {
 	
-  public static void GetCASignersMain(String Keystore, String Password) throws Exception {
+  public static void GetCASignersMain(String Keystore, String Password) throws 
+  	Exception {
 
     FileInputStream is = new FileInputStream(Keystore);
-    KeyStore keystore = KeyStore.getInstance(KeyStore.getDefaultType());
+    KeyStore keystore = ChecksAndValidations.PreChecksAndValidations(Keystore);
     keystore.load(is, Password.toCharArray());
 
     PKIXParameters params = new PKIXParameters(keystore);

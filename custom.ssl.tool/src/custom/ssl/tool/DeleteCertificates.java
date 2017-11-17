@@ -15,8 +15,11 @@ import java.util.Scanner;
 public class DeleteCertificates {
 	
 	@SuppressWarnings("resource")
-	public static void DeleteCertificatesMain(String Keystore, String Password) 
-			throws KeyStoreException, NoSuchAlgorithmException,	CertificateException, IOException {
+	public static void DeleteCertificatesMain(String Keystore, String Password) throws
+		KeyStoreException, 
+		NoSuchAlgorithmException, 
+		CertificateException, 
+		IOException {
 		
 		KeyStore ks = ChecksAndValidations.PreChecksAndValidations(Keystore);
 		FileInputStream in1 = new FileInputStream(Keystore);
