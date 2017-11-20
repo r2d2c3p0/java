@@ -26,6 +26,7 @@ public class GetCASigners {
       X509Certificate cert = ta.getTrustedCert();
       System.out.println("\t["+i+"]"+cert.getSubjectDN());
     }
+    System.out.println();
   }
   
 }

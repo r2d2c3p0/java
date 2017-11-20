@@ -20,12 +20,12 @@ public class ChecksAndValidations {
 					|| kFilename.endsWith(".P12")) {
 				ks = KeyStore.getInstance("PKCS12");
 			} else if (kFilename.endsWith(".kdb") || kFilename.endsWith(".KDB")) {
-				//ks = KeyStore.getInstance(KeyStore.getDefaultType());
-				System.out.println();
-				System.out.println(System.getProperty("java.version"));
-				System.out.println(System.getProperty("java.vendor"));
-				System.out.println();
-				System.exit(10);
+				try {
+					ks = KeyStore.getInstance("CMSKS");
+				} catch (Exception e) {
+					System.out.println("\tError: use IBM Java Provider. check your java.security.");
+					System.exit(11);
+				}
 			} else if (kFilename.endsWith(".jks") || kFilename.endsWith(".JKS")) {
 				ks = KeyStore.getInstance("JKS");
 			} else if (kFilename.endsWith(".key")) {

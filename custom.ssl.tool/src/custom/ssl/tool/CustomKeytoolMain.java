@@ -15,14 +15,15 @@ package custom.ssl.tool;
                  	2. Add Certificates
                  	3. Delete Certificates
                  	4. Download Certificates
-                 	5. Import Another Keystore
+                 	5. Import Keystore
                  	6. Download Private Key
                  	7. Show Signers Information
                  	8. Create PKCS12 Keystore
+                 	9. Change PKCS12 Key Password
                 =======================================================
 
 
-        Make your selection [1/..../8]:
+        Make your selection [1/..../9]:
 *
 *
 */
@@ -45,7 +46,7 @@ public class CustomKeytoolMain {
 
 		String CACertificatesPath = null;
 		String Keystore = null;
-		String Password = null;
+		String Password = null;		
 		
         try {
         	Keystore = args[0];
@@ -59,7 +60,6 @@ public class CustomKeytoolMain {
 			try {
 				CertificateDetails.CertificateAllDetails(Keystore);
 			} catch (CertificateException e) {
-				// TODO Auto-generated catch block
 				//e.printStackTrace();
 				System.out.println("\tERROR| CertificateException (certificate is invalid) occured.\n");
 				System.exit(1);
@@ -82,14 +82,15 @@ public class CustomKeytoolMain {
 				+ "2. Add Certificates\n\t\t\t "
 				+ "3. Delete Certificates\n\t\t\t "
 				+ "4. Download Certificates\n\t\t\t " 
-				+ "5. Import Another Keystore\n\t\t\t " 
+				+ "5. Import Keystore\n\t\t\t " 
 				+ "6. Extract Private Key\n\t\t\t "
 				+ "7. Show Signers Information\n\t\t\t "
-				+ "8. Create PKCS12 Keystore"
+				+ "8. Create PKCS12 Keystore\n\t\t\t "
+				+ "9. Change PKCS12 Key Password"
 				+ "");
 		System.out.println("\t\t=======================================================\n\n");
 		
-		String Selection;System.out.print("\tMake your selection [1/..../8]: ");
+		String Selection;System.out.print("\tMake your selection [1/..../9]: ");
 		Selection = Operation.next();
 
 		if (Selection.equals("1")) {
@@ -168,7 +169,6 @@ public class CustomKeytoolMain {
 			try {
 				KeystoreImport.KeystoreImportMain(Keyfile, Keystore, KeyPassword, Password);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				//e.printStackTrace();
 				System.out.println("\tERROR| KeystoreImport (main) occured.\n");
 			}			
@@ -185,13 +185,40 @@ public class CustomKeytoolMain {
 			try {
 				GetCASigners.GetCASignersMain(Keystore, Password);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				//e.printStackTrace();
 				System.out.println("\tERROR| Exception (GetCASigners.main) occured.\n");
 			}
 		} else if (Selection.equals("8")) {
 			System.out.println();
 			System.exit(8);
+		} else if (Selection.equals("9")) {
+			
+			int PasswordTries=1;
+			String PKCS12KeyOldPassword =null;
+			String PKCS12KeyNewPassword =null;
+			String PKCS12KeyNewPassword1 =null;
+			PKCS12KeyOldPassword = PasswordField.readPassword("\n\tEnter key '"+Keystore+"' password: ");
+			System.out.println();
+			
+			while (PasswordTries<4) {
+				
+				PKCS12KeyNewPassword = PasswordField.readPassword("\n\tEnter key '"+Keystore+"' new password: ");
+				PKCS12KeyNewPassword1 = PasswordField.readPassword("\n\tEnter new password again: ");
+				if (PKCS12KeyNewPassword.equals(PKCS12KeyNewPassword1)) {
+					try {
+						changePKCS12KeyPassword.changePKCS12KeyPasswordMain(Keystore, PKCS12KeyNewPassword1, PKCS12KeyNewPassword1);
+					} catch (CertificateException e) {
+						//e.printStackTrace();
+						System.out.println("\tNot a valid RSA key.");
+						System.exit(1);
+					}
+					PasswordTries=5;
+				} else {
+					System.out.println("\tPasswords does not match, try again.");
+					PasswordTries++;
+				}
+			}
+			
 		} else {			
 			System.out.println("\t\tSelection not found.\n");
 			System.exit(1);
