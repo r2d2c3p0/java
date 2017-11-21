@@ -9,7 +9,7 @@ package custom.ssl.tool;
 * JAVA keytool command is not very user friendly, had to come up with this program.
 * Dependencies, JAVA 5 or more and Bouncy Castle 1.47 jar.
 * 
-* 				==================================================================================
+* 		==================================================================================
                  	Keystore [key.jks], Select operation below:
                 ==================================================================================
                          1. List Certificates                    2. Add Certificates
@@ -22,7 +22,7 @@ package custom.ssl.tool;
         Make your selection [1/..../8]:
         
 	If no input keystore is provided, there are two options to choose:
-				==================================================================================
+		==================================================================================
                  	Keystore [null], Select operation below:
                 ==================================================================================
                      a. Create PKCS12 Keystore                    b. List Security Providers                          
