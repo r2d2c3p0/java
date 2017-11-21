@@ -2,28 +2,32 @@ package custom.ssl.tool;
 
 /**
 * 
+* 
 * Custom Keytool Main Program.
 * 
 * 11/8/2017.
 * JAVA keytool command is not very user friendly, had to come up with this program.
 * Dependencies, JAVA 5 or more and Bouncy Castle 1.47 jar.
 * 
-* 				=======================================================
-                 Keystore [<keystore name>], Select operation below:
-                =======================================================
-                 	1. List Certificates
-                 	2. Add Certificates
-                 	3. Delete Certificates
-                 	4. Download Certificates
-                 	5. Import Keystore
-                 	6. Download Private Key
-                 	7. Show Signers Information
-                 	8. Create PKCS12 Keystore
-                 	9. Change PKCS12 Key Password
-                =======================================================
+* 				==================================================================================
+                 	Keystore [key.jks], Select operation below:
+                ==================================================================================
+                         1. List Certificates                    2. Add Certificates
+                         3. Delete Certificates                  4. Download Certificates
+                         5. Import Keystore                      6. Extract Private Key
+                         7. Show Signers Information             8. Change PKCS12 Key Password
+                ==================================================================================
 
 
-        Make your selection [1/..../9]:
+        Make your selection [1/..../8]:
+        
+	If no input keystore is provided, there are two options to choose:
+				==================================================================================
+                 	Keystore [null], Select operation below:
+                ==================================================================================
+                     a. Create PKCS12 Keystore                    b. List Security Providers                          
+                ==================================================================================	
+*
 *
 *
 */
@@ -37,7 +41,7 @@ import java.io.IOException;
 import java.security.KeyStore;
 
 public class CustomKeytoolMain {
-
+	
 	@SuppressWarnings({ "unused", "resource" })
 	public static void main(String[] args) throws 
 		KeyStoreException, 
@@ -46,15 +50,47 @@ public class CustomKeytoolMain {
 
 		String CACertificatesPath = null;
 		String Keystore = null;
-		String Password = null;		
+		String Password = null;
+		
 		
         try {
         	Keystore = args[0];
         } catch (ArrayIndexOutOfBoundsException exception) {
-        	System.out.println("null Keystore.");
+        	System.out.println("\n\tWarning: null Keystore.");
+        	System.out.println("\n\t\t===================================================="
+    				+ "==============================");
+    		System.out.println("\t\t\t Keystore [null], Select operation below:");
+    		System.out.println("\t\t======================================================"
+    				+ "============================");
+    		System.out.println("\t\t\t "
+    				+ "a. Create PKCS12 Keystore\t\t"
+    				+ "b. List Security Providers"
+    				+ "");
+    		System.out.println("\t\t======================================================="
+    				+ "===========================\n\n");
+    		String Selection1;
+    		System.out.print("\tMake your selection [a/b]: ");
+    		Scanner Operation1 = new Scanner(System.in);
+    		Selection1 = Operation1.next();
+    		if (Selection1.equals("a")) {
+    			System.out.println();
+    			System.out.println("\t\tlaunching customkeytool shell script...\n");
+    			System.exit(8);
+    		} else if (Selection1.equals("b")) {
+    			System.out.println();
+    			try {
+    				GetSecurityProviders.GetProviders1();
+    				GetSecurityProviders.GetProviders2();
+    			} catch (Exception e) {
+    				//e.printStackTrace();
+    				System.out.println("\tERROR| Exception (GetSecurityProviders.main) occured.\n");
+    			}
+    		} else {
+    			System.out.println("\t\tSelection not found.\n");
+    		}
         	System.exit(1);
-        }
-		
+        }        
+
 		if (Keystore.endsWith(".cer") || Keystore.endsWith(".pem") || Keystore.endsWith(".crt") || Keystore.endsWith(".txt")
 		|| Keystore.endsWith(".CER") || Keystore.endsWith(".PEM") || Keystore.endsWith(".CRT") || Keystore.endsWith(".TXT")) {
 			try {
@@ -67,53 +103,44 @@ public class CustomKeytoolMain {
 		}
 		
 		KeyStore ks = ChecksAndValidations.PreChecksAndValidations(Keystore);
-		Scanner Operation = new Scanner(System.in);
-		if (Keystore.endsWith(".key")) {
-			// do nothing
-		} else {
-			Password = PasswordField.readPassword("\n\tEnter keystore '"+Keystore+"' password: ");
-		}
-
+		Scanner Operation2 = new Scanner(System.in);
+		Password = PasswordField.readPassword("\n\tEnter keystore '"+Keystore+"' password: ");
+		
 		System.out.println("\n\t\t===================================================="
 				+ "==============================");
-		System.out.println("\t\t Keystore ["+Keystore+"], Select operation below:");
+		System.out.println("\t\t\t Keystore ["+Keystore+"], Select operation below:");
 		System.out.println("\t\t======================================================"
 				+ "============================");
-		System.out.println("\t\t\t "
-				+ "1. List Certificates\t\t\t "
-				+ "2. Add Certificates\n\t\t\t "
-				+ "3. Delete Certificates\t\t\t "
-				+ "4. Download Certificates\n\t\t\t " 
-				+ "5. Import Keystore\t\t\t " 
-				+ "6. Extract Private Key\n\t\t\t "
-				+ "7. Show Signers Information\t\t "
-				+ "8. Create PKCS12 Keystore\n\t\t\t "
-				+ "9. Change PKCS12 Key Password"
+		System.out.println("\t\t\t"
+				+ "1. List Certificates\t\t\t"
+				+ "2. Add Certificates\n\t\t\t"
+				+ "3. Delete Certificates\t\t\t"
+				+ "4. Download Certificates\n\t\t\t"
+				+ "5. Import Keystore\t\t\t" 
+				+ "6. Extract Private Key\n\t\t\t"
+				+ "7. Show Signers Information\t\t"
+				+ "8. Change PKCS12 Key Password"
 				+ "");
 		System.out.println("\t\t======================================================="
 				+ "===========================\n\n");
 		
-		String Selection;System.out.print("\tMake your selection [1/..../9]: ");
-		Selection = Operation.next();
-
-		if (Selection.equals("1")) {
+		String Selection2;System.out.print("\tMake your selection [1/..../8]: ");
+		Selection2 = Operation2.next();
+		
+		if (Selection2.equals("1")) {
 			System.out.println();
 			try {
 				ListCertificates.ListCertificatesMain(Keystore, Password);
 			} catch (KeyStoreException e) {
-				//e.printStackTrace();
 				System.out.println("\tERROR| KeystoreException (keystore corrupted) occured.\n");
 			} catch (NoSuchAlgorithmException e) {
-				//e.printStackTrace();
 				System.out.println("\tERROR| NoSuchAlgorithmException (JKS/P12/KDB only) occured.\n");
 			} catch (CertificateException e) {
-				//e.printStackTrace();
 				System.out.println("\tERROR| CertificateException (certificate is invalid) occured.\n");
 			} catch (IOException e) {
-				//e.printStackTrace();
 				System.out.println("\tERROR| IOException (password incorrect??) occured.\n");
 			}			
-		} else if (Selection.equals("2")) {
+		} else if (Selection2.equals("2")) {
 			
 			try {
 				CACertificatesPath = args[1];
@@ -148,7 +175,7 @@ public class CustomKeytoolMain {
 				System.out.println("\tError| 'CACertificates' missing.\n");
 				System.exit(1);
 			}
-		} else if (Selection.equals("3")) {
+		} else if (Selection2.equals("3")) {
 			System.out.println();
 			try {
 				DeleteCertificates.DeleteCertificatesMain(Keystore, Password);
@@ -156,7 +183,7 @@ public class CustomKeytoolMain {
 				//e.printStackTrace();
 				System.out.println("\tERROR| CertificateException (Delete.main) occured.\n");
 			}
-		} else if (Selection.equals("4")) {
+		} else if (Selection2.equals("4")) {
 			System.out.println();
 			try {
 				ExtractCertificates.ExtractCertificatesMain(Keystore, Password);
@@ -164,10 +191,10 @@ public class CustomKeytoolMain {
 				//e.printStackTrace();
 				System.out.println("\tERROR| CertificateException (Extract.main) occured.\n");
 			}
-		} else if (Selection.equals("5")) {
+		} else if (Selection2.equals("5")) {
 			System.out.println();
 			System.out.print("\tEnter input keystore location: ");
-			String Keyfile = Operation.next();
+			String Keyfile = Operation2.next();
 			String KeyPassword=PasswordField.readPassword("\n\tEnter '"+Keyfile+"' password: ");
 			try {
 				KeystoreImport.KeystoreImportMain(Keyfile, Keystore, KeyPassword, Password);
@@ -175,7 +202,7 @@ public class CustomKeytoolMain {
 				//e.printStackTrace();
 				System.out.println("\tERROR| KeystoreImport (main) occured.\n");
 			}			
-		} else if (Selection.equals("6")) {
+		} else if (Selection2.equals("6")) {
 			System.out.println();
 			try {
 				ExtractPrivateKey.ExtractPrivateKeyMain(Keystore, Password);
@@ -183,7 +210,7 @@ public class CustomKeytoolMain {
 				//e.printStackTrace();
 				System.out.println("\tERROR| CertificateException (pKey.main) occured.\n");
 			}
-		} else if (Selection.equals("7")) {
+		} else if (Selection2.equals("7")) {
 			System.out.println();
 			try {
 				GetCASigners.GetCASignersMain(Keystore, Password);
@@ -191,16 +218,10 @@ public class CustomKeytoolMain {
 				//e.printStackTrace();
 				System.out.println("\tERROR| Exception (GetCASigners.main) occured.\n");
 			}
-		} else if (Selection.equals("8")) {
-			System.out.println();
-			System.out.println("\t\tlaunching customkeytool shell script...\n");
-			System.exit(8);
-		} else if (Selection.equals("9")) {
+		} else if (Selection2.equals("8")) {
 			/*
 			int PasswordTries=1;
-			String PKCS12KeyOldPassword =null;
-			String PKCS12KeyNewPassword =null;
-			String PKCS12KeyNewPassword1 =null;
+			String PKCS12KeyOldPassword =null;String PKCS12KeyNewPassword =null;String PKCS12KeyNewPassword1 =null;
 			PKCS12KeyOldPassword = PasswordField.readPassword("\n\tEnter key '"+Keystore+"' password: ");
 			System.out.println();
 			
@@ -224,10 +245,11 @@ public class CustomKeytoolMain {
 			}
 			*/
 			System.out.println("\t\toperation under construction.\n");
-		} else {			
+		} else {
 			System.out.println("\t\tSelection not found.\n");
 			System.exit(1);
 		}
+		
 	}
-
+	
 }

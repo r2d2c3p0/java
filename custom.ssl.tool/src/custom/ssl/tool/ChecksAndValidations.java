@@ -23,7 +23,7 @@ public class ChecksAndValidations {
 				try {
 					ks = KeyStore.getInstance("CMSKS");
 				} catch (Exception e) {
-					System.out.println("\tError: use IBM Java Provider. check your java.security.");
+					System.out.println("\n\tError: use IBM Java Provider. check your java.security.");
 					System.exit(11);
 				}
 			} else if (kFilename.endsWith(".jks") || kFilename.endsWith(".JKS")) {
