@@ -1,5 +1,7 @@
 package custom.ssl.tool;
-
+/**
+ * Not in use
+*/
 import java.util.Properties;
 
 import org.bouncycastle.crypto.CryptoException;

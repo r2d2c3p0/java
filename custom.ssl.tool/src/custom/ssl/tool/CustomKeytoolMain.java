@@ -74,21 +74,24 @@ public class CustomKeytoolMain {
 			Password = PasswordField.readPassword("\n\tEnter keystore '"+Keystore+"' password: ");
 		}
 
-		System.out.println("\n\t\t=======================================================");
+		System.out.println("\n\t\t===================================================="
+				+ "==============================");
 		System.out.println("\t\t Keystore ["+Keystore+"], Select operation below:");
-		System.out.println("\t\t=======================================================");
+		System.out.println("\t\t======================================================"
+				+ "============================");
 		System.out.println("\t\t\t "
-				+ "1. List Certificates\n\t\t\t "
+				+ "1. List Certificates\t\t\t "
 				+ "2. Add Certificates\n\t\t\t "
-				+ "3. Delete Certificates\n\t\t\t "
+				+ "3. Delete Certificates\t\t\t "
 				+ "4. Download Certificates\n\t\t\t " 
-				+ "5. Import Keystore\n\t\t\t " 
+				+ "5. Import Keystore\t\t\t " 
 				+ "6. Extract Private Key\n\t\t\t "
-				+ "7. Show Signers Information\n\t\t\t "
+				+ "7. Show Signers Information\t\t "
 				+ "8. Create PKCS12 Keystore\n\t\t\t "
 				+ "9. Change PKCS12 Key Password"
 				+ "");
-		System.out.println("\t\t=======================================================\n\n");
+		System.out.println("\t\t======================================================="
+				+ "===========================\n\n");
 		
 		String Selection;System.out.print("\tMake your selection [1/..../9]: ");
 		Selection = Operation.next();
@@ -190,9 +193,10 @@ public class CustomKeytoolMain {
 			}
 		} else if (Selection.equals("8")) {
 			System.out.println();
+			System.out.println("\t\tlaunching customkeytool shell script...\n");
 			System.exit(8);
 		} else if (Selection.equals("9")) {
-			
+			/*
 			int PasswordTries=1;
 			String PKCS12KeyOldPassword =null;
 			String PKCS12KeyNewPassword =null;
@@ -206,7 +210,7 @@ public class CustomKeytoolMain {
 				PKCS12KeyNewPassword1 = PasswordField.readPassword("\n\tEnter new password again: ");
 				if (PKCS12KeyNewPassword.equals(PKCS12KeyNewPassword1)) {
 					try {
-						changePKCS12KeyPassword.changePKCS12KeyPasswordMain(Keystore, PKCS12KeyNewPassword1, PKCS12KeyNewPassword1);
+						ChangePKCS12KeyPassword.changePKCS12KeyPasswordMain(Keystore, PKCS12KeyNewPassword1, PKCS12KeyNewPassword1);
 					} catch (CertificateException e) {
 						//e.printStackTrace();
 						System.out.println("\tNot a valid RSA key.");
@@ -218,7 +222,8 @@ public class CustomKeytoolMain {
 					PasswordTries++;
 				}
 			}
-			
+			*/
+			System.out.println("\t\toperation under construction.\n");
 		} else {			
 			System.out.println("\t\tSelection not found.\n");
 			System.exit(1);

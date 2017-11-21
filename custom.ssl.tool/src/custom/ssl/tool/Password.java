@@ -16,7 +16,7 @@ public class Password {
 		KeyStore ks;
 		File file = new File(args[0]);
 		if (!file.exists()) {
-			System.out.println("\n\tERROR| "+args[0]+" not found\n");
+			System.out.println("\n\tERROR| "+args[0]+" not found.\n");
 			System.exit(1);
 		} else {
 			try {

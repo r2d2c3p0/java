@@ -15,8 +15,8 @@ import java.util.Scanner;
 public class ImportPrivateKey {
 	
 	@SuppressWarnings({ "rawtypes", "unused", "resource" })
-	public static void ImportPrivateKeyMethod(String Keystore, String Password, String KeyFileName, String KeyPassword) 
-			throws 
+	public static void ImportPrivateKeyMethod(String Keystore, String Password, 
+			String KeyFileName, String KeyPassword) throws 
 			CertificateException, 
 			KeyStoreException, 
 			NoSuchAlgorithmException, 

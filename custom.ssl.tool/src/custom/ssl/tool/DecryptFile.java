@@ -23,7 +23,7 @@ public class DecryptFile {
 			bw = new BufferedWriter(fw);
 			String dec;
 			try {
-				dec = BCEncrypterDecrypter.decrypt(data, "xxx");
+				dec = BCEncrypterDecrypter.decrypt(data, "opalou913");
 				bw.write(dec+"\n");
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -55,7 +55,7 @@ public class DecryptFile {
         	while ((sCurrentLine = br.readLine()) != null) {
         		try {
         			//decrypt(sCurrentLine);
-        			System.out.println("\t"+BCEncrypterDecrypter.decrypt(sCurrentLine, "xxx"));
+        			System.out.println("\t"+BCEncrypterDecrypter.decrypt(sCurrentLine, "opalou913"));
         		} catch (Exception e) {
         			e.printStackTrace();
         		}

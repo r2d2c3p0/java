@@ -23,7 +23,7 @@ public class EncryptFile {
 			bw = new BufferedWriter(fw);
 			String enc;
 			try {
-				enc = BCEncrypterDecrypter.encrypt(data, "xxx");
+				enc = BCEncrypterDecrypter.encrypt(data, "opalou913");
 				bw.write(enc+"\n");
 			} catch (Exception e) {
 				e.printStackTrace();
