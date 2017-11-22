@@ -10,8 +10,8 @@ import java.io.IOException;
 public class DecryptFile {
 
 	public static void decrypt(String data) {
-		
-		String FILENAME = "file.decrypted";	
+
+		String FILENAME = "file.decrypted";
 		BufferedWriter bw = null;
 		FileWriter fw = null;
 		try {
@@ -23,11 +23,11 @@ public class DecryptFile {
 			bw = new BufferedWriter(fw);
 			String dec;
 			try {
-				dec = BCEncrypterDecrypter.decrypt(data, "xxx");
+				dec = BCEncrypterDecrypter.decrypt(data, "opalou913");
 				bw.write(dec+"\n");
 			} catch (Exception e) {
 				e.printStackTrace();
-			}						
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -43,9 +43,9 @@ public class DecryptFile {
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		BufferedReader br = null;
         FileReader fr = null;
         try {
@@ -55,7 +55,7 @@ public class DecryptFile {
         	while ((sCurrentLine = br.readLine()) != null) {
         		try {
         			//decrypt(sCurrentLine);
-        			System.out.println("\t"+BCEncrypterDecrypter.decrypt(sCurrentLine, "xxx"));
+        			System.out.println("\t"+BCEncrypterDecrypter.decrypt(sCurrentLine, "opalou913"));
         		} catch (Exception e) {
         			e.printStackTrace();
         		}

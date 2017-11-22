@@ -12,13 +12,13 @@ import java.util.Enumeration;
 import java.util.List;
 
 public class ListCertificates {
-	
+
 	public static void ListCertificatesMain(String Keystore, String Password) throws
-			KeyStoreException, 
-			NoSuchAlgorithmException, 
-			CertificateException, 
+			KeyStoreException,
+			NoSuchAlgorithmException,
+			CertificateException,
 			IOException {
-		
+
 		KeyStore ks = ChecksAndValidations.PreChecksAndValidations(Keystore);
 		FileInputStream in1 = new FileInputStream(Keystore);
 		ks.load(in1, Password.toCharArray());
@@ -43,7 +43,7 @@ public class ListCertificates {
 				System.out.println("\t\t\t\tIssued by: "+cert.getIssuerDN());
 				System.out.println("\t\t\t\t\tSerial number: "+cert.getSerialNumber().toString());
 				System.out.println("\t\t\t\t\tSerial number(HEX):  "+cert.getSerialNumber().toString(16));
-				System.out.println("\t\t\t\t\t\tExpires on: "+cert.getNotAfter());      
+				System.out.println("\t\t\t\t\t\tExpires on: "+cert.getNotAfter());
 				try {
 					for (List<?> SAN: cert.getSubjectAlternativeNames()) {
 						System.out.println("\t\t\t\t\t\t\tSAN entry: "+SAN.get(1));
@@ -61,12 +61,11 @@ public class ListCertificates {
 						System.out.println("\t\t\t[Chain "+ccNumber+"] Serial number(HEX):  "+certchain.getSerialNumber().toString(16));
 						System.out.println("\t\t\t[Chain "+ccNumber+"] Expires on: "+certchain.getNotAfter());
 						ccNumber++;
-					}					
+					}
 				}
 				System.out.println();
 			}
 		} catch (KeyStoreException e1) {
-			//e1.printStackTrace();
 			System.out.println("\tERROR| ListCertificates.java KeystoreException occured.\n");
 		}
 	}

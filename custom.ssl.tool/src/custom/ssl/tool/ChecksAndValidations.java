@@ -10,13 +10,13 @@ import java.io.InputStream;
 import java.security.KeyStore;
 
 public class ChecksAndValidations {
-	
+
 	static KeyStore PreChecksAndValidations(String kFilename) throws KeyStoreException {
 
 		File fKeystore = new File(kFilename);
 		KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
 		if (fKeystore.exists()) {
-			if (kFilename.endsWith(".p12") || kFilename.endsWith(".PFX") || kFilename.endsWith(".pfx") 
+			if (kFilename.endsWith(".p12") || kFilename.endsWith(".PFX") || kFilename.endsWith(".pfx")
 					|| kFilename.endsWith(".P12")) {
 				ks = KeyStore.getInstance("PKCS12");
 			} else if (kFilename.endsWith(".kdb") || kFilename.endsWith(".KDB")) {
@@ -40,7 +40,7 @@ public class ChecksAndValidations {
 		}
 		return ks;
 	}
-	
+
 	@SuppressWarnings("resource")
 	static InputStream fullStream(String fname) throws IOException {
 	    FileInputStream fis = new FileInputStream(fname);

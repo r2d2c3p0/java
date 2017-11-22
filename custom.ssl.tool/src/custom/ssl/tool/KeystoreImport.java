@@ -13,43 +13,43 @@ import java.io.OutputStream;
 /**
  * 	You can generate a pkcs12 file from PEM encoded certificate and key files using \
  * 	the following openssl command:
- * 
+ *
  * 		openssl pkcs12 -export -out keystore.pkcs12 -in public.crt -inkey private.key
  *
 */
 
 public class KeystoreImport {
-	
-   public static void KeystoreImportMain(String iKeystore, String oKeystore, 
+
+   public static void KeystoreImportMain(String iKeystore, String oKeystore,
 		   String inPassword, String outPassword) throws Exception {
-	   
+
 	  boolean addedAlias = false;
-	  
-	  if (iKeystore.equals(oKeystore)) {		  
+
+	  if (iKeystore.equals(oKeystore)) {
 		  System.out.println("\tError: Cannot import " + iKeystore+" in to "+oKeystore+".");
-		  System.exit(1);		  
+		  System.exit(1);
 	  }
-	  
-      File fileIn = new File(iKeystore); File fileOut = new File(oKeystore);      
+
+      File fileIn = new File(iKeystore); File fileOut = new File(oKeystore);
       KeyStore iks = ChecksAndValidations.PreChecksAndValidations(iKeystore);
       KeyStore oks = ChecksAndValidations.PreChecksAndValidations(oKeystore);
-      
+
       iks.load(new FileInputStream(fileIn), inPassword.toCharArray());
       oks.load((fileOut.exists()) ? new FileInputStream(fileOut) : null, outPassword.toCharArray());
-      
+
       @SuppressWarnings("rawtypes")
       Enumeration eAliases = iks.aliases();
       int n = 0;
       System.out.println();
-      
+
       while (eAliases.hasMoreElements()) {
-    	  
+
     	  String strAlias = (String)eAliases.nextElement();
     	  System.out.println("\t\tAlias " + n++ + ": " + strAlias);
-    	  
+
     	  if (oks.containsAlias(strAlias)) {
     		  System.out.println("\t\tAlias "+strAlias+" already present in "+oKeystore);
-    	  } else {    		  
+    	  } else {
     		  if (iks.isKeyEntry(strAlias)) {
         		 System.out.println("\t\tAdding key for alias " + strAlias);
         		 Key key = iks.getKey(strAlias, inPassword.toCharArray());
@@ -74,13 +74,13 @@ public class KeystoreImport {
    static void dumpChain(Certificate[] chain) {
 
       for (int i = 0; i < chain.length; i++) {
-         Certificate cert = chain[i];         
+         Certificate cert = chain[i];
          if (cert instanceof X509Certificate) {
             X509Certificate x509 = (X509Certificate)chain[i];
             System.out.println("\tSubject: " + x509.getSubjectDN());
             System.out.println("\tIssuer: " + x509.getIssuerDN());
          }
-         
+
       }
    }
 

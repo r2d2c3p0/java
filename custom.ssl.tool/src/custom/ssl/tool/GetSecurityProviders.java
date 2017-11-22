@@ -7,7 +7,7 @@ import java.util.Enumeration;
 public class GetSecurityProviders {
 
 	public static void GetProviders1() throws Exception {
-		
+
 	      Provider p[] = Security.getProviders();
 	      for (int i = 0; i < p.length; i++) {
 	        System.out.println("\t"+p[i]);
@@ -16,9 +16,9 @@ public class GetSecurityProviders {
 	      }
 	      System.out.println();
 	  }
-	
+
 	public static void GetProviders2() {
-		
+
 	    System.out.println("Providers installed on your system:");
 	    Provider[] providerList = Security.getProviders();
 	    for (int i = 0; i < providerList.length; i++) {

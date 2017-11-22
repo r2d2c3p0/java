@@ -27,17 +27,13 @@ public class Password {
 					System.out.println(args[1]);
 					System.exit(0);
 				} catch (NoSuchAlgorithmException e) {
-					//e.printStackTrace();
 					System.exit(2);
 				} catch (CertificateException e) {
-					//e.printStackTrace();
 					System.exit(2);
 				} catch (IOException e) {
-					//e.printStackTrace();
 					System.exit(2);
 				}
 			} catch (KeyStoreException e) {
-				//e.printStackTrace();
 				System.exit(1);
 			}
 		}

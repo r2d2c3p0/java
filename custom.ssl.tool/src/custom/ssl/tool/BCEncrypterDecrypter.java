@@ -1,7 +1,5 @@
 package custom.ssl.tool;
-/**
- * Not in use
-*/
+
 import java.util.Properties;
 
 import org.bouncycastle.crypto.CryptoException;
@@ -16,7 +14,7 @@ public class BCEncrypterDecrypter extends Properties {
 
 	public static String decrypt(String name, String keyString)
 		throws Exception {
-		
+
 		BlowfishEngine engine = new BlowfishEngine();
 		PaddedBufferedBlockCipher cipher =
 		new PaddedBufferedBlockCipher(engine);
@@ -35,12 +33,11 @@ public class BCEncrypterDecrypter extends Properties {
 			}
 		}
 		return result.toString();
-		
 	}
 
 	public static String encrypt(String value, String keyString)
 		throws Exception {
-	
+
 		BlowfishEngine engine = new BlowfishEngine();
 		PaddedBufferedBlockCipher cipher =
 		new PaddedBufferedBlockCipher(engine);

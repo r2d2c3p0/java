@@ -1,14 +1,14 @@
 package custom.ssl.tool;
 
 /*
-* 
+*
 * Reference: http://www.cse.chalmers.se/edu/course/TDA602/Eraserlab/pwdmasking.html
-* 
+*
 */
 
 public class EraserThread implements Runnable {
    private boolean stop;
- 
+
    /**
     *@param The prompt displayed to the user
     */

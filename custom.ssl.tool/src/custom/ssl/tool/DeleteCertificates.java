@@ -13,14 +13,14 @@ import java.util.Enumeration;
 import java.util.Scanner;
 
 public class DeleteCertificates {
-	
+
 	@SuppressWarnings("resource")
 	public static void DeleteCertificatesMain(String Keystore, String Password) throws
-		KeyStoreException, 
-		NoSuchAlgorithmException, 
-		CertificateException, 
+		KeyStoreException,
+		NoSuchAlgorithmException,
+		CertificateException,
 		IOException {
-		
+
 		KeyStore ks = ChecksAndValidations.PreChecksAndValidations(Keystore);
 		FileInputStream in1 = new FileInputStream(Keystore);
 		ks.load(in1, Password.toCharArray());
@@ -28,12 +28,12 @@ public class DeleteCertificates {
 		Enumeration aliasEnumumeration;
 		Scanner sc=new Scanner(System.in);
 		try {
-			aliasEnumumeration = ks.aliases();int aNumber =0;			
+			aliasEnumumeration = ks.aliases();int aNumber =0;
 			while (aliasEnumumeration.hasMoreElements()) {
 				System.out.println();
 				String cAlias = (String) aliasEnumumeration.nextElement();
-				if (ks.isKeyEntry(cAlias)) {					
-					System.out.println("\t|*|Alias (PrivateKey): "+cAlias);					
+				if (ks.isKeyEntry(cAlias)) {
+					System.out.println("\t|*|Alias (PrivateKey): "+cAlias);
 				} else {
 					aNumber++;
 					System.out.println("\t|"+aNumber+"|Alias: "+cAlias);
@@ -54,14 +54,13 @@ public class DeleteCertificates {
 					FileOutputStream out = new FileOutputStream(keystoreFile);
 					ks.store(out, password);
 					out.close();
-					System.out.println("\tAlias ["+cAlias+"] deleted from the keystore.");					
+					System.out.println("\tAlias ["+cAlias+"] deleted from the keystore.");
 				} else {
 					System.out.println("\tAlias ["+cAlias+"] will be skipped.");
 				}
 			}
 			System.out.println();
 		} catch (KeyStoreException e1) {
-			//e1.printStackTrace();
 			System.out.println("\tERROR| DeleteCertificates.java KeystoreException occured.\n");
 		}
 	}

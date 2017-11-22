@@ -10,8 +10,8 @@ import java.io.IOException;
 public class EncryptFile {
 
 	public static void encrypt(String data) {
-		
-		String FILENAME = "file.encrypted";	
+
+		String FILENAME = "file.encrypted";
 		BufferedWriter bw = null;
 		FileWriter fw = null;
 		try {
@@ -23,11 +23,11 @@ public class EncryptFile {
 			bw = new BufferedWriter(fw);
 			String enc;
 			try {
-				enc = BCEncrypterDecrypter.encrypt(data, "xxx");
+				enc = BCEncrypterDecrypter.encrypt(data, "opalou913");
 				bw.write(enc+"\n");
 			} catch (Exception e) {
 				e.printStackTrace();
-			}						
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -43,9 +43,9 @@ public class EncryptFile {
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		BufferedReader br = null;
         FileReader fr = null;
         try {

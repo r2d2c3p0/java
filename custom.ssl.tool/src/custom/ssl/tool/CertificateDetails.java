@@ -10,8 +10,8 @@ import java.util.List;
 
 public class CertificateDetails {
 
-	public static BigInteger CertificateSerialNumber(String CertificateFileName) throws 
-		FileNotFoundException, 
+	public static BigInteger CertificateSerialNumber(String CertificateFileName) throws
+		FileNotFoundException,
 		CertificateException {
 
 		FileInputStream fileInputStream = new FileInputStream(CertificateFileName);
@@ -20,11 +20,11 @@ public class CertificateDetails {
         return x509Certificate.getSerialNumber();
 
 	}
-	
-	public static void CertificateAllDetails(String CertificateFileName) throws 
-		FileNotFoundException, 
+
+	public static void CertificateAllDetails(String CertificateFileName) throws
+		FileNotFoundException,
 		CertificateException {
-		
+
 		FileInputStream fileInputStream = new FileInputStream(CertificateFileName);
         CertificateFactory certificateFactory = CertificateFactory.getInstance("X509");
         X509Certificate x509Certificate = (X509Certificate) certificateFactory.generateCertificate(fileInputStream);
@@ -36,7 +36,7 @@ public class CertificateDetails {
         System.out.println("\tSerial Number(HEX):  "+x509Certificate.getSerialNumber().toString(16));
         System.out.println("\tSerial Number:  "+x509Certificate.getSerialNumber().toString());
         System.out.println("\tSigning Algorithm:  "+x509Certificate.getSigAlgName());
-        
+
         // Subjective Alternative Names.
         try {
 			for (List<?> SAN: x509Certificate.getSubjectAlternativeNames()) {

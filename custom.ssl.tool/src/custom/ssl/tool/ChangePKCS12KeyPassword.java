@@ -14,18 +14,18 @@ import java.io.RandomAccessFile;
 
 public class ChangePKCS12KeyPassword {
 
-	public static byte[] changePKCS12KeyPasswordMain(String privateKeyData, 
-		String oldPassword, String newPassword) throws 
-		NoSuchAlgorithmException, 
-		CertificateException, 
+	public static byte[] changePKCS12KeyPasswordMain(String privateKeyData,
+		String oldPassword, String newPassword) throws
+		NoSuchAlgorithmException,
+		CertificateException,
 		IOException {
-		
-		
+
+
 		@SuppressWarnings("resource")
 		RandomAccessFile f = new RandomAccessFile(privateKeyData, "r");
 		byte[] b = new byte[(int)f.length()];
 		f.readFully(b);
-		
+
 	    try {
 	        KeyStore newKs = KeyStore.getInstance("PKCS12");
 	        newKs.load(null, null);
@@ -44,7 +44,7 @@ public class ChangePKCS12KeyPassword {
 				} catch (UnrecoverableKeyException e) {
 					e.printStackTrace();
 				}
-	            
+
 	        }
 	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	        newKs.store(baos, newPassword.toCharArray());

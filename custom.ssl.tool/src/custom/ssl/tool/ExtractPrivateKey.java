@@ -20,28 +20,29 @@ import java.util.Scanner;
 import org.bouncycastle.util.encoders.Base64Encoder;
 
 public class ExtractPrivateKey {
-	
+
 	private static File exportedFile=new File("private.key");;
-	
+
 	@SuppressWarnings("resource")
 	public static void ExtractPrivateKeyMain(String Keystore, String Password) throws
-			KeyStoreException, 
+			KeyStoreException,
 			NoSuchAlgorithmException,
-			CertificateException, 
+			CertificateException,
 			IOException {
-		
+
 		KeyStore ks = ChecksAndValidations.PreChecksAndValidations(Keystore);
 		FileInputStream in1 = new FileInputStream(Keystore);
 		ks.load(in1, Password.toCharArray());
 		@SuppressWarnings("rawtypes")
 		Enumeration aliasEnumumeration;
 		Scanner sc=new Scanner(System.in);
+
 		try {
-			aliasEnumumeration = ks.aliases();			
+			aliasEnumumeration = ks.aliases();
 			while (aliasEnumumeration.hasMoreElements()) {
 				System.out.println();
 				String cAlias = (String) aliasEnumumeration.nextElement();
-				if (ks.isKeyEntry(cAlias)) {					
+				if (ks.isKeyEntry(cAlias)) {
 					System.out.println("\t|*|Alias (PrivateKey): "+cAlias);
 					System.out.print("\tDownload private key from the keystore '"+Keystore+"'?: [y/n] ");
 					String InputGiven=sc.next();
@@ -57,15 +58,14 @@ public class ExtractPrivateKey {
 		                fw.write("\n");
 		                fw.write("--END PRIVATE KEY--");
 		                fw.close();
-						System.out.println("\tKey ["+cAlias+"] downloaded.");					
+						System.out.println("\tKey ["+cAlias+"] downloaded.");
 					} else {
 						System.out.println("\tKey ["+cAlias+"] will be skipped.");
 					}
 				}
 				System.out.println();
-			}				
+			}
 		} catch (KeyStoreException e1) {
-			//e1.printStackTrace();
 			System.out.println("\tERROR| ExtractPrivateKey.java KeystoreException occured.\n");
 		}
 	}
