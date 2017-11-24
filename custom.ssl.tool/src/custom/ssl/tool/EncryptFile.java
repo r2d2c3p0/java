@@ -11,7 +11,7 @@ public class EncryptFile {
 
 	public static void encrypt(String data) {
 
-		String FILENAME = "file.encrypted";
+		String FILENAME = "encrypted.file";
 		BufferedWriter bw = null;
 		FileWriter fw = null;
 		try {

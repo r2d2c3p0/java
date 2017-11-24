@@ -11,7 +11,7 @@ public class DecryptFile {
 
 	public static void decrypt(String data) {
 
-		String FILENAME = "file.decrypted";
+		String FILENAME = "decrypted.file";
 		BufferedWriter bw = null;
 		FileWriter fw = null;
 		try {
