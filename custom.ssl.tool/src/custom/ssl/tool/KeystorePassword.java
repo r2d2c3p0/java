@@ -83,7 +83,7 @@ class KeystorePassword implements Runnable {
 			ks = ChecksAndValidations.PreChecksAndValidations(args[0]);
 			ExecutorService executor = Executors.newCachedThreadPool();
 			try {
-				List<String> lines = FileUtils.readLines(new File("/apps/shane/SAT/applications/customkeytool/encrypted.file"), "utf-8");
+				List<String> lines = FileUtils.readLines(new File("encrypted.file"), "utf-8");
 				for (int i=0;i<lines.size();i++) {
 					String decrypted_password;
 					try {
