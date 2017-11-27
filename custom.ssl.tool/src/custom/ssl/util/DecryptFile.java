@@ -21,7 +21,7 @@ public class DecryptFile {
 			bufferedwriter = new BufferedWriter(filewriter);
 			String dec;
 			try {
-				dec = BCEncrypterDecrypter.decrypt(data, "e0l1p2m3i4s5r6e7v8e9n11d12n13a14e15r16u17p18y19l20e21r22a23r24s25i26h27t28u29r30t31e32h33t34");
+				dec = BCEncrypterDecrypter.decrypt(data, "xxx");
 				bufferedwriter.write(dec+"\n");
 			} catch (Exception exception) {
 				exception.printStackTrace();
@@ -49,7 +49,7 @@ public class DecryptFile {
         	while ((current_line = bufferedreader.readLine()) != null) {
         		try {
         			//decrypt(sCurrentLine);
-        			System.out.println("\t"+BCEncrypterDecrypter.decrypt(current_line, "e0l1p2m3i4s5r6e7v8e9n11d12n13a14e15r16u17p18y19l20e21r22a23r24s25i26h27t28u29r30t31e32h33t34"));
+        			System.out.println("\t"+BCEncrypterDecrypter.decrypt(current_line, "xxx"));
         		} catch (Exception exception) {
         			exception.printStackTrace();
         		}

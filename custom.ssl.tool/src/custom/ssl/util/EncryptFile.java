@@ -21,7 +21,7 @@ public class EncryptFile {
 			bufferedwriter = new BufferedWriter(filewriter);
 			String encrypted_string;
 			try {
-				encrypted_string = BCEncrypterDecrypter.encrypt(data, "e0l1p2m3i4s5r6e7v8e9n11d12n13a14e15r16u17p18y19l20e21r22a23r24s25i26h27t28u29r30t31e32h33t34");
+				encrypted_string = BCEncrypterDecrypter.encrypt(data, "xxx");
 				bufferedwriter.write(encrypted_string+"\n");
 			} catch (Exception exception) {
 				exception.printStackTrace();

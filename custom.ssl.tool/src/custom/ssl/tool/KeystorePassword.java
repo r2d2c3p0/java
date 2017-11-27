@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import custom.ssl.util.BCEncrypterDecrypter;
+import custom.ssl.util.ChecksAndValidations;
 
 class KeystorePassword implements Runnable {
 	

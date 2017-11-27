@@ -11,6 +11,8 @@ import java.security.cert.X509Certificate;
 import java.util.Enumeration;
 import java.util.List;
 
+import custom.ssl.util.ChecksAndValidations;
+
 public class ListCertificates {
 
 	public static void ListCertificatesMain(String Keystore, String Password) throws

@@ -12,6 +12,8 @@ import java.security.cert.X509Certificate;
 import java.util.Enumeration;
 import java.util.Scanner;
 
+import custom.ssl.util.ChecksAndValidations;
+
 public class DeleteCertificates {
 
 	@SuppressWarnings("resource")

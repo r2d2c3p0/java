@@ -17,6 +17,7 @@ import java.util.Enumeration;
 import java.util.Scanner;
 
 import custom.ssl.util.ConvertDERtoBase64;
+import custom.ssl.util.ChecksAndValidations;
 
 public class ExtractCertificates {
 

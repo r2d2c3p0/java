@@ -7,6 +7,8 @@ import java.security.cert.TrustAnchor;
 import java.security.cert.X509Certificate;
 import java.util.Iterator;
 
+import custom.ssl.util.ChecksAndValidations;
+
 public class GetCASigners {
 
   public static void GetCASignersMain(String Keystore, String Password) throws Exception {

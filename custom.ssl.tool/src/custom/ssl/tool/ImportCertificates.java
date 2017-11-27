@@ -16,6 +16,8 @@ import java.util.Enumeration;
 import java.util.Scanner;
 import java.math.BigInteger;
 
+import custom.ssl.util.ChecksAndValidations;
+
 public class ImportCertificates {
 
 	@SuppressWarnings({ "rawtypes", "unused", "resource" })

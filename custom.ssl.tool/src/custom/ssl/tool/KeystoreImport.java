@@ -10,6 +10,8 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
+import custom.ssl.util.ChecksAndValidations;
+
 /**
  * 	You can generate a pkcs12 file from PEM encoded certificate and key files using \
  * 	the following openssl command:

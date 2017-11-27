@@ -18,6 +18,7 @@ import java.util.Enumeration;
 import java.util.Scanner;
 
 import org.bouncycastle.util.encoders.Base64Encoder;
+import custom.ssl.util.ChecksAndValidations;
 
 public class ExtractPrivateKey {
 
