@@ -88,11 +88,11 @@ class KeystorePassword implements Runnable {
 			ks = ChecksAndValidations.PreChecksAndValidations(args[0]);
 			ExecutorService executor = Executors.newCachedThreadPool();
 			try {
-				List<String> lines = FileUtils.readLines(new File("/apps/shane/SAT/applications/customkeytool/encrypted.file"), "utf-8");
+				List<String> lines = FileUtils.readLines(new File("encrypted.file"), "utf-8");
 				for (int i=0;i<lines.size();i++) {
 					String decrypted_password;
 					try {
-						decrypted_password = BCEncrypterDecrypter.decrypt(lines.get(i), "e0l1p2m3i4s5r6e7v8e9n11d12n13a14e15r16u17p18y19l20e21r22a23r24s25i26h27t28u29r30t31e32h33t34");
+						decrypted_password = BCEncrypterDecrypter.decrypt(lines.get(i), "xxx");
 						executor.execute(new KeystorePassword(ks, decrypted_password, args[0]));
 					} catch (Exception e) {
 						//e.printStackTrace();
