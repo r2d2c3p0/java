@@ -1,8 +1,5 @@
 /**
- * 
- */
-/**
- * @author r2d2c3p0
+ * @author Shane Reddy
  *
  */
 package com.sat.util;

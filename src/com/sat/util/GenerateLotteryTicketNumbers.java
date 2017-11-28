@@ -7,7 +7,7 @@ package com.sat.util;
  * US based only.
  * 
  * MegaMillions.
- * Lotto.
+ * Texas Lotto.
  * Powerball.
  * All or Nothing (Texas).
  * 11/11/2017.
@@ -63,7 +63,7 @@ public class GenerateLotteryTicketNumbers {
 		System.out.println("\n\t\t===========================================================");
 		System.out.println("\t\t Generate Lottery Ticket Numbers, Select game below:");
 		System.out.println("\t\t===========================================================");
-		System.out.println("\t\t\t 1. Mega Millions.\n\t\t\t 2. Lotto.\n\t\t\t 3. "
+		System.out.println("\t\t\t 1. Mega Millions.\n\t\t\t 2. Texas Lotto.\n\t\t\t 3. "
 				+ "Powerball.\n\t\t\t 4. All or Nothing.");
 		System.out.println("\t\t===========================================================\n\n");
 		
@@ -73,7 +73,7 @@ public class GenerateLotteryTicketNumbers {
 		if (Selection.equals("1")) {
 			MegaMillions();
 		} else if (Selection.equals("2")) {
-			Lotto();
+			TexasLotto();
 		} else if (Selection.equals("3")) {
 			Powerball();
 		} else if (Selection.equals("4")) {
@@ -122,7 +122,7 @@ public class GenerateLotteryTicketNumbers {
 		
 	}
 	
-	public static void Lotto() {
+	public static void TexasLotto() {
 		
 		List<Integer> lt_winningnumber_arrayL = new ArrayList<Integer>();
 		int lt_rollnumber;
