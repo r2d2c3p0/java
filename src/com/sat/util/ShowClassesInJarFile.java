@@ -17,7 +17,7 @@ public class ShowClassesInJarFile {
 		
 		try {
 			
-			zip = new ZipInputStream(new FileInputStream("C:\\Users\\REDDYFAMILY\\Desktop\\srtool.jar"));
+			zip = new ZipInputStream(new FileInputStream("C:\\Users\\Desktop\\srtool.jar"));
 			
 			for (ZipEntry entry = zip.getNextEntry(); entry != null; entry = zip.getNextEntry()) {
 				
