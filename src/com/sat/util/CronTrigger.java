@@ -19,7 +19,7 @@ public class CronTrigger {
     	Trigger trigger = TriggerBuilder
 				.newTrigger()
 				.withIdentity("YERTrigger", "web-middleware")
-				.withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?"))
+				.withSchedule(CronScheduleBuilder.cronSchedule("0 5 17 * * ?"))
 				.build();
     	
     	Scheduler scheduler = new StdSchedulerFactory().getScheduler();

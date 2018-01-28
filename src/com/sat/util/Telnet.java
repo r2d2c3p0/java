@@ -1,10 +1,12 @@
 package com.sat.util;
 
-import java.net.SocketAddress;
-import java.net.SocketTimeoutException;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
+import java.net.SocketTimeoutException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Telnet {
 	
@@ -23,7 +25,9 @@ public class Telnet {
 		    socket.connect(sockaddr, 2000);
 		    try {
 		        socket.close();
-		        System.out.println("Connection closed successfully: "+hostname+" at "+port);
+		        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+		        System.out.println(timeStamp);
+		        System.out.println("Connection clocccsed successfully: "+hostname+" at "+port);
 		        SUCCESS = 1;
 		    } catch (IOException ex) {
 		        System.out.println("Error occured trying to close the socket for "+hostname+" at "+port);
