@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ListCertificates {
 
-	public static void run(List<String> fileFinalList, String encryptedFile, String appName, String hostName) {
+	public static void run(List<String> fileFinalList, String encryptedFile, String hostName) {
 		for (String keystore : fileFinalList) {
 			String final_string=null;
 			KeyStore keystoreInstance;
@@ -32,8 +32,8 @@ public class ListCertificates {
 								.getCertificate(cAlias);
 						Date expTime = x509certificate.getNotAfter();
 						long expTimeL = expTime.getTime();						
-						final_string = hostName+" : "+appName+" : "+keystore+" "
-								+ ": "+x509certificate.getSubjectDN().toString()+" : "+GetLocalTime.run(expTimeL);						
+						final_string = x509certificate.getSubjectDN().toString()+ " |"
+								+ " "+GetLocalTime.run(expTimeL)+ " | "+ hostName+" | "+keystore;
 						System.out.println(final_string);
 					}
 				} catch (NoSuchAlgorithmException nsae) {
@@ -45,7 +45,7 @@ public class ListCertificates {
 				} catch (IOException ioe) {
 					System.out.println(" [SimpleText] "+ioe+" "+keystore);
 				} catch (NullPointerException npe) {
-					System.out.println(" [SimpleText] "+npe+" "+keystore);
+					System.out.println(" [password help] "+keystore);
 				}
 			} catch (KeyStoreException kse) {
 				System.out.println(" [SimpleText] KeyStoreException occured "+keystore);

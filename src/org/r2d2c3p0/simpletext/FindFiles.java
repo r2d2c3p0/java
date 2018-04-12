@@ -37,7 +37,6 @@ public class FindFiles {
 					}
 				}
 			} catch (NullPointerException npe) {
-				//
 			}
 		}
 

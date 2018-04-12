@@ -19,7 +19,6 @@ public class KeystorePassword {
 		String wPassword=null;
 
 		try {
-			@SuppressWarnings("unchecked")
 			List<String> lines = FileUtils.readLines(new File(encryptedFile), "utf-8");
 			for (int i=0;i<lines.size();i++) {
 				try {
