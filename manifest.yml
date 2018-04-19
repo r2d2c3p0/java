@@ -1,0 +1,7 @@
+---
+applications:
+- name: r2d2c3p0-cf-app
+  memory: 1024M
+  buildpack: java_buildpack
+  routes:
+  - route: r2d2c3p0.cfapps.io
