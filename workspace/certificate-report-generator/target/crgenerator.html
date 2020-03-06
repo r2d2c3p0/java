@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name="Certificate Report Generator" content="Keystore & Certificates">
+		<title>Certificate Report Generator Application</title>
+		<meta charset="utf-8" />
+
+		<link href= "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" rel="stylesheet" type="text/css" crossorigin="anonymous">
+		<link href= "https://nightly.datatables.net/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+
+		<script src= "https://code.jquery.com/jquery-3.1.0.js" type="text/javascript"></script>
+		<script src= "https://cdn.datatables.net/1.10.13/js/jquery.dataTables.js" type="text/javascript"></script>
+		<script src= "https://cdn.datatables.net/select/1.2.1/js/dataTables.select.min.js" type="text/javascript"></script>
+
+		<style>
+			td.details-control {
+				text-align:center;
+				color:forestgreen;
+				cursor: pointer;
+			}
+			tr.shown td.details-control {
+				text-align:center;
+				color:orange;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<h3 align="center"> Certificate Report Generator </h3>
+		<table width="100%" class="display" id="crgenerator" cellspacing="0">
+			<thead>
+				<tr>
+					<th></th>
+					<th>Common Name</th>
+					<th>Status</th>
+					<th>Serial Number</th>
+				</tr>
+			</thead>
+			<tfoot>
+				<tr>
+					<th></th>
+					<th>Common Name</th>
+					<th>Status</th>
+					<th>Serial Number</th>
+				</tr>
+			</tfoot>
+		</table>
+		<p>Report generated on [02/25/2018] 19:39:57 CST</p>
+		<script type="text/javascript" src="configuration/js/main.js"></script>
+	</body>
+
+</html>
